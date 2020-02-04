@@ -17,7 +17,7 @@ services:
       - ./:/var/www
       - ./dev/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     networks:
-      - app-network
+      - app-network-johnjlincoln-laravel
 
   #Nginx Service
   webserver:
@@ -32,11 +32,11 @@ services:
       - ./:/var/www
       - ./dev/nginx/conf.d/:/etc/nginx/conf.d/
     networks:
-      - app-network
+      - app-network-johnjlincoln-laravel
 
   #MySQL Service
   db:
-    image: mysql:5.7.29
+    image: mysql:5.7.22
     container_name: db
     restart: unless-stopped
     tty: true
@@ -48,17 +48,17 @@ services:
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
-      - dbdata:/var/lib/mysql
+      - dbdata-johnjlincoln-laravel:/var/lib/mysql
       - ./dev/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
-      - app-network
+      - app-network-johnjlincoln-laravel
 
 #Docker Networks
 networks:
-  app-network:
+  app-network-johnjlincoln-laravel:
     driver: bridge
 
 #Volumes
 volumes:
-  dbdata:
+  dbdata-johnjlincoln-laravel:
     driver: local
