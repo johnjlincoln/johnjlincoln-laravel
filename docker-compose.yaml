@@ -26,7 +26,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "80:80"
+      - "8080:80"
       - "443:443"
     volumes:
       - ./:/var/www
@@ -43,8 +43,8 @@ services:
     ports:
       - "3306:3306"
     environment:
-      MYSQL_DATABASE: laravel
-      MYSQL_ROOT_PASSWORD: temp #can we create real user here or nah?
+      MYSQL_DATABASE: johnjlincoln-laravel
+      MYSQL_ROOT_PASSWORD: develop
       SERVICE_TAGS: dev
       SERVICE_NAME: mysql
     volumes:
